@@ -2,7 +2,7 @@ const canvas = document.querySelector('canvas');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const maxRadius = 80;
+const maxRadius = 30;
 // const minRadius = 10;
 const colorArray = [
     '#FFFF33',
@@ -59,12 +59,12 @@ function Circle(x, y, dx, dy, radius, minRadius) {
     c.fill();
   };
 /* http://www.playfuljs.com/particle-effects-are-easy/ */
-  this.attract = (x, y) => {
-    let dx = x - this.x;
-    let dy = y - this.y;
-    let distance = Math.sqrt(dx * dx + dy * dy);
-    this.x += dx / distance;
-    this.y += dy / distance;
+  this.attract = (x_, y_) => {
+    let dx_ = x_ - this.x;
+    let dy_ = y_ - this.y;
+    let distance = Math.sqrt(dx_ * dx_ + dy_ * dy_);
+    this.x += dx_ / distance;
+    this.y += dy_ / distance;
   };
 
   this.integrate = () => {
@@ -115,7 +115,7 @@ function Circle(x, y, dx, dy, radius, minRadius) {
 let circleArray = [];
 function init() {
   circleArray = [];
-  for (let i = 0; i < 1000; ++i) {
+  for (let i = 0; i < 400; ++i) {
     let radius = Math.random() * 3 + 2; // radius ranges of 2-5
     // subtract diameter and add radius to make sure circle does not spawn on
     // edge of screen
@@ -142,7 +142,7 @@ function animate() {
 }
 
 function start() {
-  for (let i = 0; i < 1000; ++i) {
+  for (let i = 0; i < 400; ++i) {
     let radius = Math.random() * 3 + 2; // range of 2-5
     // subtract diameter and add radius to make sure circle does not spawn on
     // edge of screen
@@ -156,7 +156,6 @@ function start() {
 
 
 start();
-if (circleArray.length === 1000) {
-  console.log("done");
+if (circleArray.length === 400) {
   animate();
 }

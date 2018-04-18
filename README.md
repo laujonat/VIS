@@ -5,11 +5,11 @@ Visuals is an HTML 5 canvas visual experience.  Users can explore various use ca
 
 ### Functionality and MVP ###
 A full paged canvas will span an entire web page. The following effects will be available for cycle:
-- Mouse growing
-- Gravity Effects 
+- Feather particles
+- Circular motion visuals
+- Gravity Effects
 - Firework movement effects
 - Mouse trailing explosions
-- Circular motion visuals
 - Meteor strike effects
 
 

@@ -1,0 +1,23 @@
+{
+  "name": "visuals",
+  "version": "1.0.0",
+  "description": "canvas visuals",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laujonat/canvas_visuals.git"
+  },
+  "author": "Jonathan Lau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laujonat/canvas_visuals/issues"
+  },
+  "homepage": "https://github.com/laujonat/canvas_visuals#readme",
+  "dependencies": {
+    "webpack": "^3.9.1"
+  }
+}
