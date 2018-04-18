@@ -15,7 +15,6 @@ const colorArray = [
     '#fff',
 ];
 
-
 const c = canvas.getContext('2d');
 
 const mouse = {
@@ -26,7 +25,6 @@ const mouse = {
 window.addEventListener('mousemove', (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
-    console.log(`x: ${mouse.x}, y: ${mouse.y}`);
 });
 
 window.addEventListener('resize', () => {
@@ -35,8 +33,6 @@ window.addEventListener('resize', () => {
 
   init();
 });
-
-
 
 function Circle(x, y, dx, dy, radius, minRadius) {
   this.x = this.oldX = x;
@@ -52,8 +48,6 @@ function Circle(x, y, dx, dy, radius, minRadius) {
     c.beginPath();
     // arc (x, y, radius, start angle, end angle, counterclockwise)
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    // c.strokeStyle = '#154167';
-    // c.stroke();
     c.globalAlpha = 0.7;
     c.fillStyle = this.color;
     c.fill();
@@ -75,7 +69,6 @@ function Circle(x, y, dx, dy, radius, minRadius) {
     this.x += velocityX/1.5;
     this.y += velocityY/1.5;
   };
-
 
   /* KEY ANIMATION FUNCTION OF APPLICATION */
   this.update = () => {
@@ -110,8 +103,6 @@ function Circle(x, y, dx, dy, radius, minRadius) {
   };
 }
 
-
-
 let circleArray = [];
 function init() {
   circleArray = [];
@@ -134,10 +125,7 @@ function animate() {
   c.clearRect(0, 0, canvas.width, canvas.height);
 
   for( let i = 0; i < circleArray.length; ++i) {
-    // circleArray[i].attract(mouse.x, mouse.y);
-    // circleArray[i].integrate();
     circleArray[i].update();
-
   }
 }
 
