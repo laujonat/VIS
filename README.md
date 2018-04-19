@@ -34,4 +34,6 @@ Complete cyclone particle effect.
 #### Day 4 ####
 Add canvas container for header and smooth transitions between particle effects.
 #### Day 5 ####
-Final touches for smooth transitions and overall page layouts. 
+Final touches for smooth transitions and overall page layouts.
+Refactor code. 
+Add mobile touch functionality.

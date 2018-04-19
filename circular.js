@@ -63,13 +63,51 @@ addEventListener('resize', () => {
 
 let toggleAnimation = 0;
 
-canvas.addEventListener('click', () => {
-  if ( toggleAnimation === 4) {
-    toggleAnimation = 1;
-    return;
-  }
-  toggleAnimation += 1;
-});
+function tapOrClick(event) {
+   //handle tap or click.
+    event.preventDefault();
+    if ( toggleAnimation === 4) {
+      toggleAnimation = 1;
+      return;
+    }
+    toggleAnimation += 1;
+    return false;
+}
+
+canvas.addEventListener("mouseup", tapOrClick, false);
+canvas.addEventListener("touchend", tapOrClick, false);
+
+// mobile
+var touchesInAction = {};
+function touchStartHandler(event) {
+    var touches = event.changedTouches;
+
+    for(var j = 0; j < touches.length; j++) {
+      touchesInAction[ "$" + touches[j].identifier ] = {
+        identifier : touches[j].identifier,
+        pageX : touches[j].pageX,
+        pageY : touches[j].pageY
+      };
+    }
+}
+
+function touchEndHandler(event) {
+    var touches = event.changedTouches;
+    for(var j = 0; j < touches.length; j++) {
+      /* access stored touch info on touchend */
+      var theTouchInfo = touchesInAction[ "$" + touches[j].identifier ];
+      theTouchInfo.dx = touches[j].pageX - theTouchInfo.pageX;  /* x-distance moved since touchstart */
+      theTouchInfo.dy = touches[j].pageY - theTouchInfo.pageY;  /* y-distance moved since touchstart */
+    }
+
+
+}
+canvas.addEventListener("touchstart", touchStartHandler, false);
+canvas.addEventListener("touchend", touchEndHandler, false);
+
+
+
+
 
 // Utility Functions
 function randomIntFromRange(min, max) {
