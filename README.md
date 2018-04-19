@@ -1,32 +1,37 @@
-## Visuals - A HTML5 Canvas visual showcase ##
+## VIS - Particle Manipulation ##
 ### Background and Overview ###
-Visuals is an HTML 5 canvas visual experience.  Users can explore various use cases of canvas technologies and cycle through effects with through mouse clicks.
+VIS is an HTML 5 canvas visual experience.  Users can manipulate the movements of hue cycled particles through mouse movements and clicks.
 
 
 ### Functionality and MVP ###
 A full paged canvas will span an entire web page. The following effects will be available for cycle:
-- Feather particles
-- Circular motion visuals
-- Gravity Effects
-- Firework movement effects
-- Mouse trailing explosions
-- Meteor strike effects
+- Bounded particle effect
+- Mouse over effects
+- Particle attraction effect
+- Particle cyclone effect
+- Particle explosion effect
+- Resetting canvas
 
 
-### Wireframes ###
-
+### Demo ###
+![](https://i.imgur.com/UeszUvm.png)
 
 ### Architecture and Technologies ###
-- HTML5 Canvas
+- HTML5 Canvas for particle manipulation and layout
 - Vanilla Javascript for event handling
 - CSS for basic page styling and page resets
 
 
 ### Implementation Timeline ###
 #### Day 1 ####
-Understand OpenWeatherAPI along with TopoJSON
+Familiarize with HTML5 Canvas
 #### Day 2 ####
-Display a formatted map onto the page with correct data pulling from API
+Sample project creating simple circles responsive to mouse click.
+Complete default particle velocity settings.
 #### Day 3 ####
+Add styling to effects and add pixel movements.
+Complete cyclone particle effect.
 #### Day 4 ####
+Add canvas container for header and smooth transitions between particle effects.
 #### Day 5 ####
+Final touches for smooth transitions and overall page layouts. 
