@@ -40,11 +40,11 @@ function panel() {
   c.fillText("Jonathan Lau", 150, 80);
 
   c.font = '26px Bungee Inline';
-  c.fillText("VIS", 150, 125);
+  c.fillText("VIS", 150, 140);
 
   c.font = '16px Times';
-  c.fillText("Mousepress to manipulate particles", 150, 180);
-  c.fillText("Spacebar to reset", 150, 200);
+  c.fillText("mouse press/click to manipulate particles", 150, 180);
+  c.fillText("spacebar to reset", 150, 210);
 }
 
 // Event Listeners
