@@ -249,8 +249,8 @@ function init() {
     // let radius = 20;
     let x = Math.random() * (canvas.width - radius * 2) + radius;
     let y = Math.random() * (canvas.height - radius * 2) + radius;
-    let dx = (Math.random() - 1);
-    let dy = (Math.random() - 1);
+    let dx = (Math.random() - 0.5);
+    let dy = (Math.random() - 0.5);
     particles.push(new Particle(x, y, dx, dy,
       radius, randomColor(colorArray)));
   }
