@@ -71,7 +71,6 @@ window.addEventListener('click', () => {
   toggleAnimation += 1;
 });
 
-
 // Utility Functions
 function randomIntFromRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -139,7 +138,6 @@ function Particle(x, y, dx, dy, radius, color) {
       this.x -= 3 * dx_ / distance_;
       this.y -= 3 * dy_ / distance_;
     };
-
 
     this.integrate = () => {
       var velocityX = this.x - this.oldX;
