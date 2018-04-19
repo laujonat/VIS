@@ -81,32 +81,42 @@ function Particle(x, y, dx, dy, radius, color) {
     this.color = color;
 
 
+    // define how far that particle will be away from mouse
+
     // circular
     this.radians = Math.random() * Math.PI * 2;
     // define speed of particles
-    this.velocity = 0.02;
+    this.velocity = 0.03;
     this.lastMouse = {x: x, y: y};
     // set range of particles from center
     this.distanceFromCenter = {
-      x: randomIntFromRange(80, 360),
-      y: randomIntFromRange(80, 360)
+      x: randomIntFromRange(80, 260),
+      y: randomIntFromRange(80, 260)
     };
+
+
+    this.flag = false;
+
+
+
+
 
     /* http://www.playfuljs.com/particle-effects-are-easy/ */
     this.attract = (x_, y_) => {
       let dx_ = (x_ - this.x);
       let dy_ = (y_ - this.y);
       let distance_ = Math.sqrt(dx_ * dx_ + dy_ * dy_);
-      this.x += 2 * dx_ / distance_;
-      this.y += 2 * dy_ / distance_;
+
+      this.x += 3 * dx_ / distance_;
+      this.y += 3 * dy_ / distance_;
     };
 
     this.detract = (x_, y_) => {
       let dx_ = (x_ - this.x);
       let dy_ = (y_ - this.y);
       let distance_ = Math.sqrt(dx_ * dx_ + dy_ * dy_);
-      this.x -= 3 * dx_ / distance_;
-      this.y -= 3 * dy_ / distance_;
+      this.x -= 4 * dx_ / distance_;
+      this.y -= 4 * dy_ / distance_;
     };
 
 
@@ -120,52 +130,105 @@ function Particle(x, y, dx, dy, radius, color) {
     };
 
     this.update = () => {
-      this.attract(mouse.x, mouse.y);
-      this.integrate();
-      // Move points over time in circular motion
+      const lastPoint = {x: this.x, y: this.y};
+
+
       if (toggleAnimation === 1) {
+
+        this.attract(mouse.x, mouse.y);
+        this.integrate();
+
         // attraction visual
-        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-          this.dx = -this.dx;
-        }
 
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-          this.dy = -this.dy;
-        }
 
-        this.x += this.dx;
-        this.y += this.dy;
 
       } else if (toggleAnimation === 2) {
 
-        // move points
-        // let lastPoint = {x: this.x, y: this.y};
+        // circular
         this.radians += this.velocity;
-        // drag effect
-        this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05;
-        this.lastMouse.y += (mouse.y - this.lastMouse.y) * 0.05;
 
+        // drag effect
+        if (this.flag) {
+          this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05;
+          this.lastMouse.y += (mouse.y - this.lastMouse.y) * 0.05;
+
+          // console.log("close!");
+          this.x = this.lastMouse.x + Math.cos(this.radians) * this.distanceFromCenter.x;
+          this.y = this.lastMouse.y + Math.sin(this.radians) * this.distanceFromCenter.y;
+
+
+        } else {
+          if ((mouse.x - this.x < 20 && mouse.x - this.x > -20
+            && mouse.y - this.y < 20 && mouse.y - this.y > -20)) {
+
+
+            this.flag = true;
+          } else {
+            this.attract(mouse.x, mouse.y);
+            this.integrate();
+          }
+        }
+
+
+
+        // if ((mouse.x - this.x < 100 && mouse.x - this.x > -100
+        //   && mouse.y - this.y < 100 && mouse.y - this.y > -100)) {
+        //
+        //
+        //   this.x += Math.cos(this.radians);
+        //   this.y += Math.sin(this.radians);
+        //
+        //   console.log("here");
+        //
+        //
+        //
+        //   attract = true;
+        // } else {
+        //   // keep pulling particle closer
+        //   attract = false;
+        //
+        //   this.attract(mouse.x, mouse.y);
+        //   this.integrate();
+        // }
+
+        //var dx=point2.x-point1.x;
+        //var dy=point2.y-point1.y;
+        // var distance=Math.sqrt(dx*dx+dy*dy);
+
+
+        // this.x += Math.cos(this.radians);
+        // this.y += Math.sin(this.radians);
         // circular effect
-        this.x = this.lastMouse.x + Math.cos(this.radians) * this.distanceFromCenter.x;
-        this.y = this.lastMouse.y + Math.sin(this.radians) * this.distanceFromCenter.y;
+        // this.x += this.lastMouse.x + Math.cos(this.radians) * this.distanceFromCenter.x;
+        // this.y += this.lastMouse.y + Math.sin(this.radians) * this.distanceFromCenter.y;
+
+
 
       } else if (toggleAnimation === 3) {
-        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-          this.dx = -this.dx;
-        }
+        this.flag = false;
 
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-          this.dy = -this.dy;
-        }
+
+        // detraction effect
+
         this.detract(mouse.x, mouse.y);
         this.integrate();
 
       }
+
+      if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+        this.dx = -this.dx;
+      }
+
+      if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+        this.dy = -this.dy;
+      }
+
+      this.x += this.dx;
+      this.y += this.dy;
+
       // interactivity
-      // mouse position less than 50 pixels away from circle and
-      // no more than 50 pixels away are growing
-      if (mouse.x - this.x < 30 && mouse.x - this.x > -30
-          && mouse.y - this.y < 30 && mouse.y - this.y > -30) {
+      if (mouse.x - this.x < 40 && mouse.x - this.x > -40
+          && mouse.y - this.y < 40 && mouse.y - this.y > -40) {
         // enforce max radius
         if (this.radius < maxRadius) {
           this.radius += 3;
@@ -175,18 +238,23 @@ function Particle(x, y, dx, dy, radius, color) {
         // ensure radius will not shrink past original radius of circle
         this.radius -= 1;
       }
-      this.draw();
+      this.draw(lastPoint);
     };
 
-    this.draw = () => {
-      this.hue -= 0.9;
+    this.draw = lastPoint => {
+      this.hue -= 2;
 
       c.beginPath();
+      // c.strokeStyle = this.color;
       c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-      c.globalAlpha = 0.8;
+      // c.moveTo(lastPoint.x, lastPoint.y);
+      // c.lineTo(this.x, this.y);
+      c.globalAlpha = 0.6;
+
       c.fillStyle = `hsla(${this.hue}, 100%, 50%,1)`;
       // c.fillStyle = this.color;
       c.fill();
+      // c.stroke();
       c.closePath();
     };
 }
@@ -196,8 +264,9 @@ let particles;
 function init() {
   particles = [];
 
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 1000; i++) {
     let radius = Math.random() * 8 + 2;
+    // let radius = 20;
     let x = Math.random() * (canvas.width - radius * 2) + radius;
     let y = Math.random() * (canvas.height - radius * 2) + radius;
     let dx = (Math.random() - 0.5);
@@ -206,11 +275,10 @@ function init() {
       radius, randomColor(colorArray)));
   }
 }
-
 // Animation Loop
 function animate() {
     requestAnimationFrame(animate);
-    c.fillStyle = 'rgba(0, 0, 0, 0.7)';
+    c.fillStyle = 'rgba(0, 0, 0, 0.8)';
     // draw new slight transparent rectangle on each frame
     c.fillRect(0, 0, canvas.width, canvas.height);
 
