@@ -63,7 +63,7 @@ addEventListener('resize', () => {
 
 let toggleAnimation = 0;
 
-window.addEventListener('click', () => {
+canvas.addEventListener('click', () => {
   if ( toggleAnimation === 4) {
     toggleAnimation = 1;
     return;
