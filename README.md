@@ -9,7 +9,7 @@
 
 
 <h3 align="center"><a href="https://github.com/laujonat/VIS">See it Live!</a></h3>
-![screenshot](https://i.imgur.com/UeszUvm.png)
+![](https://i.imgur.com/UeszUvm.png)
 
 
 
