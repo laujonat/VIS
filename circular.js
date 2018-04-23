@@ -43,7 +43,7 @@ function panel() {
   c.fillText("VIS", 150, 140);
 
   c.font = '16px Times';
-  c.fillText("mouse press/click to manipulate particles", 150, 180);
+  c.fillText("press/click to manipulate particles", 150, 180);
   c.fillText("spacebar to reset", 150, 210);
 }
 
