@@ -3,6 +3,10 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const maxRadius = 20;
 const c = canvas.getContext('2d');
+let linkText;
+var githubText="http://www.github.com/laujonat";
+var linkedinText="http://www.linkedin.com/in/jonathanhlau";
+let inLink = false;
 
 const mouse = {
     x: innerWidth / 2,
@@ -32,7 +36,7 @@ function panel() {
   c.fillStyle = grd;
   // c.fillRect(10, 10, 300, 200);
   // c.fillStyle = 'rgba(0, 0, 20, 0.9)';
-  c.fillRect(10, 10, 300, 240);
+  c.fillRect(10, 10, 300, 540);
 
   c.fillStyle = 'white';
   c.font = '45px Sacramento, cursive';
@@ -45,12 +49,43 @@ function panel() {
   c.font = '16px Times';
   c.fillText("press/click to manipulate particles", 150, 180);
   c.fillText("spacebar to reset", 150, 210);
+
+  let github = new Image();
+  github.src = 'images/github.png';
+  c.drawImage(github, 110, 220, 35, 35);
+
+  let linkedin = new Image();
+  linkedin.src = 'images/linkedin.png';
+  c.drawImage(linkedin, 160, 220, 35, 35);
 }
+
+function onClick(e) {
+  if (inLink) {
+    window.location = linkText;
+  }
+}
+
+addEventListener("click", onClick, false);
 
 // Event Listeners
 addEventListener('mousemove', event => {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
+
+    if (mouse.x >= 110 && mouse.x <= (110 + 35) && mouse.y >= 220 && mouse.y <= (220 + 35)){
+      document.body.style.cursor = "pointer";
+      linkText = githubText;
+      inLink =  true;
+    } else if (mouse.x >= 160 && mouse.x <= (160 + 35) && mouse.y >= 220 && mouse.y <= (220 + 35)) {
+      document.body.style.cursor = "pointer";
+      linkText = linkedinText;
+      inLink =  true;
+    } else {
+      document.body.style.cursor = "";
+      linkText = "";
+      inLink =  false;
+    }
+
     // console.log(`x: ${mouse.x} y: ${mouse.y}` );
 });
 
