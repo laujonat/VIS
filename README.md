@@ -11,7 +11,10 @@
 <h3 align="center"><a href="https://github.com/laujonat/VIS">See it Live!</a></h3>
 <img src="https://i.imgur.com/UeszUvm.png"/>
 
+## Technologies
 
+* Javascript
+* HTML5 Canvas
 
 
 ## Key Features
@@ -27,7 +30,7 @@
 
 ## Challenges
 
-* One of the biggest challenges of this project was creating a smooth transition from the attraction effect into the circular spiral effect.  There would be a rigid transitional jump due to how the pixels must be rendered between 80 and 260 pixels of the mouse for the effect to take place. The below solution was implemented to continue forcing each particle to be within 20 pixels before the transition and start onto its circular path. 
+* One of the biggest challenges of this project was creating a smooth transition from the attraction effect into the circular spiral effect.  There would be a rigid transitional jump due to how the pixels must be rendered between 80 and 260 pixels of the mouse for the effect to take place. The below solution was implemented to continue forcing each particle to be within 20 pixels before the transition and start onto its circular path.
 
 ```JavaScript
 if ((mouse.x - this.x < 20 && mouse.x - this.x > -20
