@@ -25,8 +25,19 @@
   - Manipulate particles in various directions
 * Hue color change
 
+## Challenges
 
+* One of the biggest challenges of this project was creating a smooth transition from the attraction effect into the circular spiral effect.  There would be a rigid transitional jump due to how the pixels must be rendered between 80 and 260 pixels of the mouse for the effect to take place. The below solution was implemented to continue forcing each particle to be within 20 pixels before the transition and start onto its circular path. 
 
+```JavaScript
+if ((mouse.x - this.x < 20 && mouse.x - this.x > -20
+  && mouse.y - this.y < 20 && mouse.y - this.y > -20)) {
+  this.flag = true;
+} else {
+  this.attract(mouse.x, mouse.y);
+  this.integrate();
+}
+```
 
 
 ## How To Use
