@@ -24,19 +24,20 @@ const colorArray = [
     '#fff',
 ];
 
-document.body.onkeyup = function(e){
-    if(e.keyCode === 32){
-      toggleAnimation = 0;
-      init();
-    }
+document.body.onkeyup = function(e) {
+  if(e.keyCode === 32){
+    toggleAnimation = 0;
+    init();
+  }
 };
 
 function panel() {
-  let grd = c.createRadialGradient(75,50,5,90,60,100);
+  let grd = c.createRadialGradient(275, 250, 5, 250, 480, 400);
+
   c.fillStyle = grd;
   // c.fillRect(10, 10, 300, 200);
   // c.fillStyle = 'rgba(0, 0, 20, 0.9)';
-  c.fillRect(10, 10, 300, 540);
+  c.fillRect(10, 10, 300, 480);
 
   c.fillStyle = 'white';
   c.font = '45px Sacramento, cursive';
@@ -46,17 +47,29 @@ function panel() {
   c.font = '26px Bungee Inline';
   c.fillText("VIS", 150, 140);
 
+  c.textAlign = 'left';
   c.font = '16px Times';
-  c.fillText("press/click to manipulate particles", 150, 180);
-  c.fillText("spacebar to reset", 150, 210);
+  c.fillText("VIS was created entirely using HTML5", 30, 180);
+  c.fillText("Canvas and Javascript. There are 4 particle", 30, 200);
+  c.fillText("behaviors to explore through mouse clicks,", 30, 220);
+  c.fillText("each changing the velocity and movement", 30, 240);
+  c.fillText("of the particles to create a new effect.", 30, 260);
+  c.fillText("The project was particularily enjoyable", 30, 280);
+  c.fillText("where trigonometry concepts were utilized", 30, 300);
+  c.fillText("to create the desired movement patterns.", 30, 320);
 
+
+  c.textAlign = 'center';
   let github = new Image();
   github.src = 'images/github.png';
-  c.drawImage(github, 110, 220, 35, 35);
+  c.drawImage(github, 110, 370, 35, 35);
 
   let linkedin = new Image();
   linkedin.src = 'images/linkedin.png';
-  c.drawImage(linkedin, 160, 220, 35, 35);
+  c.drawImage(linkedin, 160, 370, 35, 35);
+
+  c.fillText("press/click to manipulate particles", 150, 440);
+  c.fillText("spacebar to reset", 150, 460);
 }
 
 function onClick(e) {
@@ -72,11 +85,11 @@ addEventListener('mousemove', event => {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
 
-    if (mouse.x >= 110 && mouse.x <= (110 + 35) && mouse.y >= 220 && mouse.y <= (220 + 35)){
+    if (mouse.x >= 110 && mouse.x <= (110 + 35) && mouse.y >= 370 && mouse.y <= (370 + 35)){
       document.body.style.cursor = "pointer";
       linkText = githubText;
       inLink =  true;
-    } else if (mouse.x >= 160 && mouse.x <= (160 + 35) && mouse.y >= 220 && mouse.y <= (220 + 35)) {
+    } else if (mouse.x >= 160 && mouse.x <= (160 + 35) && mouse.y >= 370 && mouse.y <= (370 + 35)) {
       document.body.style.cursor = "pointer";
       linkText = linkedinText;
       inLink =  true;
@@ -134,15 +147,10 @@ function touchEndHandler(event) {
       theTouchInfo.dx = touches[j].pageX - theTouchInfo.pageX;  /* x-distance moved since touchstart */
       theTouchInfo.dy = touches[j].pageY - theTouchInfo.pageY;  /* y-distance moved since touchstart */
     }
-
-
 }
+
 canvas.addEventListener("touchstart", touchStartHandler, false);
 canvas.addEventListener("touchend", touchEndHandler, false);
-
-
-
-
 
 // Utility Functions
 function randomIntFromRange(min, max) {
