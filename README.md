@@ -8,7 +8,7 @@
 
 
 
-<h3 align="center"><a href="https://github.com/laujonat/VIS">See it Live!</a></h3>
+<h3 align="center"><a href="https://laujonat.github.io/VIS/">See it Live!</a></h3>
 <img src="https://i.imgur.com/UeszUvm.png"/>
 
 ## Technologies
