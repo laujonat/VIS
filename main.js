@@ -4,8 +4,8 @@ canvas.height = window.innerHeight;
 const maxRadius = 20;
 const c = canvas.getContext('2d');
 let linkText;
-var githubText="http://www.github.com/laujonat";
-var linkedinText="http://www.linkedin.com/in/jonathanhlau";
+const githubText = "http://www.github.com/laujonat";
+const linkedinText = "http://www.linkedin.com/in/jonathanhlau";
 let inLink = false;
 
 const mouse = {
@@ -33,10 +33,7 @@ document.body.onkeyup = function(e) {
 
 function panel() {
   let grd = c.createRadialGradient(275, 250, 5, 250, 480, 400);
-
   c.fillStyle = grd;
-  // c.fillRect(10, 10, 300, 200);
-  // c.fillStyle = 'rgba(0, 0, 20, 0.9)';
   c.fillRect(10, 10, 300, 480);
 
   c.fillStyle = 'white';
@@ -79,8 +76,6 @@ function onClick(e) {
 }
 
 addEventListener("click", onClick, false);
-
-// Event Listeners
 addEventListener('mousemove', event => {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
@@ -98,8 +93,6 @@ addEventListener('mousemove', event => {
       linkText = "";
       inLink =  false;
     }
-
-    // console.log(`x: ${mouse.x} y: ${mouse.y}` );
 });
 
 addEventListener('resize', () => {
@@ -126,11 +119,11 @@ canvas.addEventListener("mouseup", tapOrClick, false);
 canvas.addEventListener("touchend", tapOrClick, false);
 
 // mobile
-var touchesInAction = {};
+const touchesInAction = {};
 function touchStartHandler(event) {
-    var touches = event.changedTouches;
+    let touches = event.changedTouches;
 
-    for(var j = 0; j < touches.length; j++) {
+    for(let j = 0; j < touches.length; j++) {
       touchesInAction[ "$" + touches[j].identifier ] = {
         identifier : touches[j].identifier,
         pageX : touches[j].pageX,
@@ -140,10 +133,9 @@ function touchStartHandler(event) {
 }
 
 function touchEndHandler(event) {
-    var touches = event.changedTouches;
-    for(var j = 0; j < touches.length; j++) {
-      /* access stored touch info on touchend */
-      var theTouchInfo = touchesInAction[ "$" + touches[j].identifier ];
+    const touches = event.changedTouches;
+    for(let j = 0; j < touches.length; j++) {
+      let theTouchInfo = touchesInAction[ "$" + touches[j].identifier ];
       theTouchInfo.dx = touches[j].pageX - theTouchInfo.pageX;  /* x-distance moved since touchstart */
       theTouchInfo.dy = touches[j].pageY - theTouchInfo.pageY;  /* y-distance moved since touchstart */
     }
@@ -242,8 +234,7 @@ function Particle(x, y, dx, dy, radius, color) {
       } else if (toggleAnimation === 2) {
         // circular visual
         this.radians += this.velocity;
-
-
+        
         if (this.flag) {
           // drag effect
           this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05;
@@ -252,8 +243,6 @@ function Particle(x, y, dx, dy, radius, color) {
           // circular motion
           this.x = this.lastMouse.x + Math.cos(this.radians) * this.distanceFromCenter.x;
           this.y = this.lastMouse.y + Math.sin(this.radians) * this.distanceFromCenter.y;
-
-
         } else {
           // attract before circulate for smooth transition
           if ((mouse.x - this.x < 20 && mouse.x - this.x > -20
@@ -308,10 +297,8 @@ function Particle(x, y, dx, dy, radius, color) {
 
       c.beginPath();
       c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-      // c.globalAlpha = 0.6;
 
       c.fillStyle = `hsla(${this.hue}, 100%, 50%, 0.6)`;
-      // c.fillStyle = this.color;
       c.fill();
 
       c.closePath();
@@ -325,7 +312,6 @@ function init() {
 
   for (let i = 0; i < 1000; i++) {
     let radius = Math.random() * 5 + 2;
-    // let radius = 20;
     let x = Math.random() * (canvas.width - radius * 2) + radius;
     let y = Math.random() * (canvas.height - radius * 2) + radius;
     let dx = (Math.random() - 0.5);
