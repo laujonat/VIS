@@ -13,6 +13,8 @@
 
 ## Technologies
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/laujonat/VIS.svg)](https://greenkeeper.io/)
+
 * Javascript
 * HTML5 Canvas
 
