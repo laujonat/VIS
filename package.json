@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/laujonat/canvas_visuals#readme",
   "dependencies": {
-    "webpack": "^3.9.1"
+    "webpack": "^4.30.0"
   }
 }
